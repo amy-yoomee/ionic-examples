@@ -18,7 +18,7 @@ Commented examples with unit tests.
 
 * Using data and methods from a service:
   * [Controller](./www/js/controllers/usingServiceController.js)
-  * [Tests]('./tests/controllers/usingServiceController.tests.js')
+  * [Tests](./tests/controllers/usingServiceController.tests.js)
 
 ## TO DO
 
