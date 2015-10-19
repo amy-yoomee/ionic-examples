@@ -6,12 +6,24 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var karma = require('karma').server;
+var uglify = require('gulp-uglify');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  js: ['./www/js/**/*.js']
 };
 
-gulp.task('default', ['sass']);
+var scriptsList = [
+  './www/js/app.js',
+  './www/js/directives/**/*.js',
+  './www/js/controllers/**/*.js',
+  './www/js/services/**/*.js',
+  './www/lib/angular-resource/angular-resource.js',
+  './www/lib/angular-mocks/angular-mocks.js'
+];
+
+gulp.task('default', ['sass', 'scripts']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -28,6 +40,24 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.js, ['scripts']);
+});
+
+// Concat js scripts
+gulp.task('scripts', function() {
+  gulp.src(scriptsList)
+  .pipe(concat('script.js'))
+  .pipe(gulp.dest('./www/js/'));
+});
+
+// Unit tests
+gulp.task('test', function(done) {
+  karma.start({
+    configFile: __dirname + '/tests/karma.conf.js',
+    singleRun: true
+  }, function() {
+    done();
+  });
 });
 
 gulp.task('install', ['git-check'], function() {

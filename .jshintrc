@@ -1,0 +1,34 @@
+{
+  "jquery": true,
+  "predef": ["define", "yoomeeServices", "yoomeeControllers", "yoomeeDirectives", "before", "after", "beforeEach", "afterEach", "it", "expect", "describe", "moment", "module", "inject", "angular", "jasmine", "spyOn", "cordova"],
+
+  // Prohibit use of == and != in favor of === and !==.
+  "eqeqeq": true,
+
+  // Suppress warnings about == null comparisons.
+  "eqnull": true,
+
+  // Enforce tab width of 2 spaces.
+  "indent": 2,
+
+  // Prohibit use of a variable before it is defined.
+  "latedef": true,
+
+  // Enforce use of single quotation marks for strings.
+  "quotmark": "single",
+
+  // Prohibit trailing whitespace.
+  "trailing": true,
+
+  // Prohibit use of explicitly undeclared variables.
+  "undef": true,
+
+  // Warn when variables are defined but never used.
+  "unused": true,
+
+  // Enforce placing 'use strict' at the top function scope
+  "strict": true,
+
+  // Allow the use of expressions with assignments or function calls
+  "expr": true
+}
